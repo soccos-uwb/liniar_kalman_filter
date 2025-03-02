@@ -1,7 +1,9 @@
 import numpy as np
 
+
 class EKF_UWB:
-    def __init__(self, dt, process_noise, measurement_noise, initial_state, anchor_x):
+    def __init__(self, dt: float, process_noise: float, measurement_noise: float,
+                 initial_state: list[float], anchor_x: float):
         self.dt = dt  # Временной шаг
         self.x = np.array(initial_state, dtype=float)  # Состояние [x, vx]
         self.P = np.eye(2) * 100  # Ковариация (начальная неопределённость)
@@ -17,16 +19,15 @@ class EKF_UWB:
         self.x = F @ self.x  # Прогноз состояния
         self.P = F @ self.P @ F.T + self.Q  # Обновление ковариации
 
-    def update(self, measured_distance):
+    def update(self, measured_distance: float):
         xa = self.anchor_x  # Координата anchor
-        x = self.x[0]  # Текущая координата
-        vx = self.x[1]  # Текущая скорость
+        x, vx = self.x  # Распаковка состояния
 
         # Нелинейная функция измерения (расстояние до anchor с учётом скорости)
         h = np.array([[np.abs(x + vx * self.dt - xa)]])
 
         # Якобиан H
-        epsilon = 1e-6  # Чтобы избежать деления на ноль
+        epsilon = 1e-6
         H = np.array([[(x + vx * self.dt - xa) / (np.abs(x + vx * self.dt - xa) + epsilon), 0]])
 
         # Инновация и её ковариация
@@ -38,5 +39,5 @@ class EKF_UWB:
         self.x += (K @ y_residual).flatten()
         self.P = (np.eye(2) - K @ H) @ self.P
 
-    def get_state(self):
+    def get_state(self) -> np.ndarray:
         return self.x.copy()

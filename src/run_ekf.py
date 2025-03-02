@@ -1,7 +1,9 @@
 import numpy as np
 from ekf_uwb import EKF_UWB
 
-def run_ekf(measured_distances, dt, process_noise, measurement_noise, initial_state, anchor_x):
+
+def run_ekf(measured_distances: np.ndarray, dt: float, process_noise: float,
+            measurement_noise: float, initial_state: list[float], anchor_x: float) -> tuple[np.ndarray, np.ndarray]:
     """
     Запуск расширенного фильтра Калмана для обработки данных UWB.
 

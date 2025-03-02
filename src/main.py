@@ -13,7 +13,8 @@ anchor_x = 0.0  # Координата anchor по x
 measured_distances = log_to_nplist("../data/uwb/rotate.log", json_address="../data/uwb/rotate.json")
 
 # Запуск EKF
-estimated_positions, estimated_velocities = run_ekf(measured_distances, dt, process_noise, measurement_noise, initial_state, anchor_x)
+estimated_positions, estimated_velocities = (
+    run_ekf(measured_distances, dt, process_noise, measurement_noise, initial_state, anchor_x))
 
 # Визуализация результатов
 plot_results(measured_distances, estimated_positions, estimated_velocities, dt)

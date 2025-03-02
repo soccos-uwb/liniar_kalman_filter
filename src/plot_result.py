@@ -1,7 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_results(measured_distances, estimated_positions, estimated_velocities, dt):
+
+def plot_results(measured_distances: np.ndarray, estimated_positions: np.ndarray,
+                 estimated_velocities: np.ndarray, dt: float) -> None:
     """
     Визуализация результатов фильтрации.
 
