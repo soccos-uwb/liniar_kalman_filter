@@ -32,6 +32,5 @@ def plot_results(measured_distances: np.ndarray, estimated_positions: np.ndarray
     plt.xlabel('Время (сек)')
     plt.ylabel('Скорость (м/с)')
     plt.legend()
-
-    plt.tight_layout()
+    plt.savefig("../data/plt.png")
     plt.show()
