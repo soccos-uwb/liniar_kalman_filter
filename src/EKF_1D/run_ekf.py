@@ -1,5 +1,5 @@
 import numpy as np
-from ekf_uwb import EKF_UWB
+from src.EKF_1D.ekf_uwb import EKF_UWB
 
 
 def run_ekf(measured_distances: np.ndarray, dt: float, process_noise: float,

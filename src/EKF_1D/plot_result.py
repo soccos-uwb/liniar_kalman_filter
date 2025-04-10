@@ -34,5 +34,5 @@ def plot_results(measured_distances: np.ndarray, estimated_positions: np.ndarray
     plt.legend()
 
     plt.subplots_adjust(hspace=0.5)
-    plt.savefig("../data/plt.png")
+    plt.savefig("../../data/data_1D/plt.png")
     plt.show()
