@@ -1,6 +1,6 @@
-from src.EKF_1D.data_prac import log_to_nplist
-from run_ekf import run_ekf
-from plot_result import plot_results
+from src.EKF_1D.parser import log_to_nplist
+from pipeline import run_ekf
+from visualisation import plot_results
 
 # Параметры
 dt = 0.1  # Временной шаг (в секундах)

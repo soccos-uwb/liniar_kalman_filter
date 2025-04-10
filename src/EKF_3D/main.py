@@ -1,6 +1,6 @@
 from parser import parse_data
-from run_ekf_3D import run_filter_pipeline
-from plot_result import visualize_results
+from pipeline import run_filter_pipeline
+from visualisation import visualize_results
 
 
 dt = 0.1
